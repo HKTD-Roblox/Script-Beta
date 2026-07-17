@@ -9,7 +9,7 @@ local Humanoid, Animator
 
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 local Window = Rayfield:CreateWindow({
-Name = "Auto Block Script",
+Name = "Auto Block Hub",
 LoadingTitle = "Auto Block Script",
 LoadingSubtitle = "Script By HKTD",
 ConfigurationSaving = {
