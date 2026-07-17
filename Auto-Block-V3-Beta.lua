@@ -1,3 +1,5 @@
+--Script By HKTD, TikTok: https://www.tiktok.com/@hktd_roblox
+
 -- Auto Block Rayfield Script (Full Features)
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
