@@ -309,7 +309,7 @@ v5:Destroy();
 --         pcall(v422);
 --     end
 -- end);
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hdanhhub/hdanhhub/refs/heads/main/Fix-Lag.lua.txt"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HKTD-Roblox/Script-Beta/refs/heads/main/Fix-Lag-Beta.lua"))()
 else
 shared.LoaderTitle = "Please Follow My TikTok Channel!";
 shared.LoaderKeyFrames = {
@@ -613,5 +613,5 @@ v5:Destroy();
 --         pcall(v422);
 --     end
 -- end);
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hdanhhub/hdanhhub/refs/heads/main/Fix-Lag.lua.txt"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HKTD-Roblox/Script-Beta/refs/heads/main/Fix-Lag-Beta.lua"))()
 end
