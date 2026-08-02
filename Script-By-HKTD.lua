@@ -9,7 +9,7 @@ GUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 -- Create the main frame
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 200, 0, 60)
-MainFrame.Position = UDim2.new(0, -200, 0.95, -60) -- Start off-screen
+MainFrame.Position = UDim2.new(0, -200, 0.95, -60)
 MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 MainFrame.Parent = GUI
 
@@ -26,7 +26,7 @@ MainFrameStroke.Parent = MainFrame
 local NotificationFrame = Instance.new("Frame")
 NotificationFrame.Size = UDim2.new(0.9, 0, 0.8, 0)
 NotificationFrame.Position = UDim2.new(0.05, 0, 0.1, 0)
-NotificationFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Darker gray
+NotificationFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 NotificationFrame.Parent = MainFrame
 
 -- Round the corners of the notification frame
@@ -56,39 +56,71 @@ ProgressBar.Parent = NotificationFrame
 -- Create the progress bar fill
 local ProgressBarFill = Instance.new("Frame")
 ProgressBarFill.Size = UDim2.new(1, 0, 1, 0)
-ProgressBarFill.BackgroundColor3 = Color3.fromRGB(255, 165, 0) -- Orange
+ProgressBarFill.BackgroundColor3 = Color3.fromRGB(255, 165, 0)
 ProgressBarFill.Parent = ProgressBar
 
+-- Rainbow color
 RunService.RenderStepped:Connect(function()
 	local hue = (tick() % 4) / 4
 	local rainbowColor = Color3.fromHSV(hue, 1, 1)
-	
+
 	MainFrameStroke.Color = rainbowColor
 	TextLabel.TextColor3 = rainbowColor
+	ProgressBarFill.BackgroundColor3 = rainbowColor
 end)
 
 -- Function to show the notification
 local function ShowNotification()
-	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	local tweenInfo = TweenInfo.new(
+		0.5,
+		Enum.EasingStyle.Quad,
+		Enum.EasingDirection.Out
+	)
+
 	local endPosition = UDim2.new(0.01, 0, 0.95, -60)
-	local tween = TweenService:Create(MainFrame, tweenInfo, { Position = endPosition })
+
+	local tween = TweenService:Create(
+		MainFrame,
+		tweenInfo,
+		{Position = endPosition}
+	)
+
 	tween:Play()
 
 	-- Start the progress bar countdown
-	local countdownTime = 6 -- Countdown time in seconds
+	local countdownTime = 5
 	local startTime = tick()
 
 	while tick() - startTime < countdownTime do
 		local elapsedTime = tick() - startTime
 		local progress = 1 - (elapsedTime / countdownTime)
-		ProgressBarFill:TweenSize(UDim2.new(progress, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Linear, 0.1, true)
+
+		ProgressBarFill:TweenSize(
+			UDim2.new(progress, 0, 1, 0),
+			Enum.EasingDirection.Out,
+			Enum.EasingStyle.Linear,
+			0.1,
+			true
+		)
+
 		task.wait()
 	end
 
 	-- Hide the notification
-	local tweenInfoOut = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+	local tweenInfoOut = TweenInfo.new(
+		0.5,
+		Enum.EasingStyle.Quad,
+		Enum.EasingDirection.In
+	)
+
 	local hidePosition = UDim2.new(-1, 0, 0.95, -60)
-	local tweenOut = TweenService:Create(MainFrame, tweenInfoOut, { Position = hidePosition })
+
+	local tweenOut = TweenService:Create(
+		MainFrame,
+		tweenInfoOut,
+		{Position = hidePosition}
+	)
+
 	tweenOut:Play()
 end
 
