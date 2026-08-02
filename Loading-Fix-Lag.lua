@@ -1,6 +1,6 @@
 repeat task.wait() until game:IsLoaded()
 local TablePlace = {7449423635,2753915549,4442272183}
-setclipboard("https://www.tiktok.com/@hktd_roblox")
+
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "Banana Cat Hub", -- Required
 	Text = "Loading...", -- Required
